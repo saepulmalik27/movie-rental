@@ -9,7 +9,7 @@ this is how i setup this project, i will explain step by step below here
 ### Add depedency
 
 ```
-yarn add "@testing-library/jest-dom" "@testing-library/react" "@typescript-eslint/eslint-plugin" "eslint-config-prettier" "eslint-plugin-prettier" "eslint-plugin-react" "husky" "jest" "jest-environment-jsdom" "prettier" "prettier-plugin-tailwindcss" "lint-staged"
+yarn add "@testing-library/jest-dom" "@testing-library/react" "@typescript-eslint/eslint-plugin" "eslint-config-prettier" "eslint-plugin-prettier" "eslint-plugin-react" "husky" "jest" "jest-environment-jsdom" "prettier" "prettier-plugin-tailwindcss" "lint-staged" "@headlessui/react" "nextjs-toploader"
 ```
 
 ### Setup eslint
@@ -80,15 +80,20 @@ read this for more documentation about husky [husky Documentation](https://typic
 ### Setup Lint-staged
 
 ```
-#.lintstagedrc.js
+# lintstaged.config.js
 module.exports = {
-  // Run type-check on changes to TypeScript files
-  "**/*.ts?(x)": () => "yarn type-check",
-  // Lint & Prettify TS and JS files
+  // this will check Typescript files
+  "**/*.(ts|tsx)": () => "yarn tsc --noEmit",
+
+  // This will lint and format TypeScript and                                             //JavaScript files
   "**/*.(ts|tsx|js)": (filenames) => [
-    `yarn lint . ${filenames.join(" ")}`,
+    `yarn eslint --fix ${filenames.join(" ")}`,
     `yarn prettier --write ${filenames.join(" ")}`,
   ],
+
+  // this will Format MarkDown and JSON
+  "**/*.(md|json)": (filenames) =>
+    `yarn prettier --write ${filenames.join(" ")}`,
 };
 ```
 
