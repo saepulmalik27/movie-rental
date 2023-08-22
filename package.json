@@ -9,9 +9,7 @@
     "start": "next start",
     "lint": "next lint",
     "test": "jest --watchAll",
-    "prepare": "husky install",
-    "type-check": "tsc --project tsconfig.json --pretty --noEmit",
-    "prettier": "prettier --write ."
+    "prepare": "husky install"
   },
   "dependencies": {
     "@types/node": "20.5.1",
