@@ -3,9 +3,13 @@ import React from "react";
 import useMovieView from "./_hooks/useMovieView";
 import Image from "next/image";
 import { USDcurrency } from "@/helpers/utils";
+import { ArrowLeftIcon } from "@heroicons/react/20/solid";
+import { twMerge } from "tailwind-merge";
+import { MinusCircleIcon, PlusCircleIcon } from "@heroicons/react/24/outline";
 
 const MovieView = () => {
-  const { movieDetail } = useMovieView();
+  const { movieDetail, handleBackToCatalog, handleToggleCart, isInCart } =
+    useMovieView();
 
   return (
     <>
@@ -21,20 +25,41 @@ const MovieView = () => {
             <div className='absolute top-0 left-0 w-full h-full bg-black bg-opacity-50'></div>
           </div>
         </div>
-        <div className='grid grid-cols-3 w-full  max-w-5xl p-5 '>
+        <section className='grid grid-cols-3 w-full  max-w-5xl p-5 '>
           <div className='col-span-2 flex flex-col gap-5 justify-center items-start'>
+            <div
+              className='flex gap-2 select-none cursor-pointer text-pink-300'
+              onClick={handleBackToCatalog}
+            >
+              <ArrowLeftIcon className=' h-5 w-5' />
+              <h3 className='font-bold'>Bact To Catalog</h3>
+            </div>
             <div className='flex flex-col gap-1'>
               <h3 className='font-bold text-white'> Star Wars </h3>
               <h1 className='font-bold md:text-5xl text-3xl text-white'>
-                {movieDetail?.title}{" "}
+                {movieDetail?.title}
               </h1>
             </div>
             <div className='flex gap-5'>
               <div className='px-2 py-1 rounded-full bg-white text-center w-40 select-none'>
                 {USDcurrency.format(movieDetail?.price as number)}
               </div>
-              <button className='bg-primary-green px-2 py-1 rounded-full text-white w-40'>
-                Order
+              <button
+                onClick={handleToggleCart}
+                className={twMerge(
+                  " px-2 py-1 rounded-full text-white w-40 flex gap-2 justify-center items-center",
+                  isInCart ? "bg-red-500" : "bg-primary-green"
+                )}
+              >
+                {isInCart ? (
+                  <>
+                    <MinusCircleIcon className='h-5 w-5' /> <span>Rented</span>
+                  </>
+                ) : (
+                  <>
+                    <PlusCircleIcon className='h-5 w-5' /> <span>Rent Now</span>
+                  </>
+                )}
               </button>
             </div>
           </div>
@@ -44,7 +69,7 @@ const MovieView = () => {
             width={250}
             height={375}
           />
-        </div>
+        </section>
       </header>
       <main className='max-w-6xl m-auto p-5'>
         <div className='bg-brown-200 rounded-lg sm:p-20 p-5 text-white max-w-5xl m-auto grid md:grid-cols-3  gap-5'>

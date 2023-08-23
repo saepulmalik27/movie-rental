@@ -1,15 +1,16 @@
+"use client";
 import { USDcurrency } from "@/helpers/utils";
-import { MinusCircleIcon, PlusCircleIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import React from "react";
 import { twMerge } from "tailwind-merge";
+import useMovieCard from "./_hooks/useMovieCard";
 type MovieCardProps = {
   title: string;
   cover: string;
   description: string;
   onClick: () => void;
   price: number;
-  onCart: boolean;
+  epidose_id: number;
 };
 
 const MovieCard: React.FC<MovieCardProps> = ({
@@ -18,8 +19,10 @@ const MovieCard: React.FC<MovieCardProps> = ({
   description,
   onClick,
   price,
-  onCart,
+  epidose_id,
 }) => {
+  const { isInCart } = useMovieCard(epidose_id);
+
   return (
     <div onClick={onClick} className='flex flex-col gap-3 w-[250px]'>
       <div className='relative w-fit'>
@@ -27,21 +30,16 @@ const MovieCard: React.FC<MovieCardProps> = ({
           <div className='rounded-full py-1 px-4 bg-white select-none font-bold'>
             {USDcurrency.format(price)}
           </div>
-          <button
-            className={twMerge(
-              " rounded-full py-1 px-5  w-fit flex flex-row gap-1 justify-center items-center",
-              onCart ? "bg-red-500" : "bg-primary-green"
-            )}
-          >
-            {onCart ? (
-              <MinusCircleIcon className='text-white h-5 w-5' />
-            ) : (
-              <PlusCircleIcon className='text-white h-5 w-5' />
-            )}
-            <span className='text-white font-bold capitalize'>
-              {!onCart ? "Order" : "cancel"}
-            </span>
-          </button>
+          {isInCart && (
+            <button
+              className={twMerge(
+                " rounded-full py-1 px-5  w-fit flex flex-row gap-1 justify-center items-center",
+                "bg-primary-green"
+              )}
+            >
+              <span className='text-white font-bold capitalize'>rented</span>
+            </button>
+          )}
         </div>
 
         <Image

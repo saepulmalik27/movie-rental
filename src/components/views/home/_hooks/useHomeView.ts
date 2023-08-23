@@ -4,8 +4,9 @@ import { TMovie } from "@/lib/types/movie.type";
 import { useRouter } from "next/navigation";
 
 const useHomeView = () => {
-  const [movieList, setMovieList] = React.useState<TMovie[]>(movies.results);
   const { push } = useRouter();
+
+  const [movieList, setMovieList] = React.useState<TMovie[]>(movies.results);
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.value === "") setMovieList(movies.results);
     const value = e.target.value;
