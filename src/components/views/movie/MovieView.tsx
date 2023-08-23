@@ -3,7 +3,6 @@ import React from "react";
 import useMovieView from "./_hooks/useMovieView";
 import Image from "next/image";
 import { USDcurrency } from "@/helpers/utils";
-import { ArrowLeftIcon } from "@heroicons/react/20/solid";
 import { twMerge } from "tailwind-merge";
 import { MinusCircleIcon, PlusCircleIcon } from "@heroicons/react/24/outline";
 import ToCatalog from "@/components/templates/tocatalog/ToCatalog";
@@ -34,7 +33,7 @@ const MovieView = () => {
                 {movieDetail?.title}
               </h1>
             </div>
-            <div className='flex gap-5'>
+            <div className='flex flex-col sm:flex-row gap-5'>
               <div className='px-2 py-1 rounded-full bg-white text-center w-40 select-none'>
                 {USDcurrency.format(movieDetail?.price as number)}
               </div>
@@ -57,12 +56,14 @@ const MovieView = () => {
               </button>
             </div>
           </div>
-          <Image
-            src={movieDetail?.image.cover as string}
-            alt={movieDetail?.title as string}
-            width={250}
-            height={375}
-          />
+          <div className='flex justify-center items-center'>
+            <Image
+              src={movieDetail?.image.cover as string}
+              alt={movieDetail?.title as string}
+              width={250}
+              height={375}
+            />
+          </div>
         </section>
       </header>
       <main className='max-w-6xl m-auto p-5'>
