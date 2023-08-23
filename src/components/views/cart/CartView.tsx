@@ -11,12 +11,14 @@ const CartView = () => {
 
   return (
     <>
-      <div className='h-[500px] bg-pink-950 clip-path flex justify-center items-center relative'>
-        <h1 className='font-bold text-white text-4xl'>Movie Rental</h1>
+      <div className='h-[500px] before:header-before clip-path  relative'>
+        <div className='bg-black bg-opacity-50 w-full h-full flex justify-center items-center'>
+          <h1 className='font-bold text-pink-700 text-4xl'>Movie Rental</h1>
+        </div>
       </div>
-      <main className='max-w-xl m-auto -mt-40 p-4 relative z-10'>
-        <ToCatalog />
-        <section className='rounded-xl shadow-md p-4 bg-white flex flex-col gap-5'>
+      <main className='max-w-xl m-auto -mt-40 p-4 flex flex-col gap-5  relative z-10'>
+        <ToCatalog className='text-pink-600' />
+        <section className='rounded-xl shadow-md p-4 bg-brown-200 text-white flex flex-col gap-5'>
           <h1 className='font-bold '>Your Order</h1>
           <div className='flex flex-col gap-2'>
             {cartItems.map((item, index) => (
