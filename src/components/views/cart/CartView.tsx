@@ -37,6 +37,9 @@ const CartView = () => {
                   <MinusCircleIcon className='h-10 w-10 text-red-600' />
                 </div>
                 <div className='flex-grow'>
+                  <h3 className='font-bold text-sm text-pink-500'>
+                    {USDcurrency.format(item.price)}
+                  </h3>
                   <h3 className='font-bold text-sm'>{item.title}</h3>
                 </div>
                 <Image
@@ -52,7 +55,7 @@ const CartView = () => {
           <hr className='h-1 bg-black' />
           <div className='flex justify-between items-center'>
             <h3 className='font-bold text-sm'>Total Price :</h3>
-            <h3 className='font-bold text-sm'>
+            <h3 className='font-bold text-3xl'>
               {USDcurrency.format(totalPrice)}
             </h3>
           </div>
