@@ -2,12 +2,11 @@ import movie from "@/data/movie.json";
 import { TMovie } from "@/lib/types/movie.type";
 import { addToCart, removeFromCart } from "@/redux/feature/cart.slice";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { useParams, useRouter } from "next/navigation";
+import { useParams } from "next/navigation";
 import React from "react";
 
 const useMovieView = () => {
   const { id } = useParams();
-  const { push } = useRouter();
   const { items } = useAppSelector((state) => state.cart);
   const dispatch = useAppDispatch();
 
@@ -23,10 +22,6 @@ const useMovieView = () => {
     return items.some((item) => item.episode_id === Number(id));
   }, [items, id]);
 
-  const handleBackToCatalog = () => {
-    push("/");
-  };
-
   const handleToggleCart = React.useCallback(() => {
     if (isInCart) {
       dispatch(removeFromCart(movieDetail as TMovie));
@@ -39,7 +34,6 @@ const useMovieView = () => {
   return {
     isInCart,
     movieDetail,
-    handleBackToCatalog,
     handleToggleCart,
   };
 };

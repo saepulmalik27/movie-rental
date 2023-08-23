@@ -34,7 +34,7 @@ const MovieCard: React.FC<MovieCardProps> = ({
             <button
               className={twMerge(
                 " rounded-full py-1 px-5  w-fit flex flex-row gap-1 justify-center items-center",
-                "bg-primary-green"
+                "bg-red-500"
               )}
             >
               <span className='text-white font-bold capitalize'>rented</span>

@@ -8,8 +8,7 @@ type SearchProps = {
 
 const Search: React.FC<SearchProps> = ({ onChange, placeholder }) => {
   return (
-    <div className='flex flex-row justify-center items-center border border-gray-400 w-fit px-4 py-2 rounded-full'>
-      {" "}
+    <div className='flex flex-row justify-center items-center border border-red-500 w-fit px-4 py-2 rounded-full'>
       <input
         className='outline-none bg-transparent h-5 text-white placeholder:capitalize'
         type='text'

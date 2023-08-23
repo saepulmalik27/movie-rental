@@ -9,6 +9,10 @@ const useHeader = () => {
     push("/");
   };
 
+  const handleClickCart = () => {
+    push("/cart");
+  };
+
   const cartCount = React.useMemo(() => {
     return items.length;
   }, [items]);
@@ -16,6 +20,7 @@ const useHeader = () => {
   return {
     handleCLickBack,
     cartCount,
+    handleClickCart,
   };
 };
 

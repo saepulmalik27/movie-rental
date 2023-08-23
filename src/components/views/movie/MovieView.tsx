@@ -6,10 +6,10 @@ import { USDcurrency } from "@/helpers/utils";
 import { ArrowLeftIcon } from "@heroicons/react/20/solid";
 import { twMerge } from "tailwind-merge";
 import { MinusCircleIcon, PlusCircleIcon } from "@heroicons/react/24/outline";
+import ToCatalog from "@/components/templates/tocatalog/ToCatalog";
 
 const MovieView = () => {
-  const { movieDetail, handleBackToCatalog, handleToggleCart, isInCart } =
-    useMovieView();
+  const { movieDetail, handleToggleCart, isInCart } = useMovieView();
 
   return (
     <>
@@ -27,13 +27,7 @@ const MovieView = () => {
         </div>
         <section className='grid grid-cols-3 w-full  max-w-5xl p-5 '>
           <div className='col-span-2 flex flex-col gap-5 justify-center items-start'>
-            <div
-              className='flex gap-2 select-none cursor-pointer text-pink-300'
-              onClick={handleBackToCatalog}
-            >
-              <ArrowLeftIcon className=' h-5 w-5' />
-              <h3 className='font-bold'>Bact To Catalog</h3>
-            </div>
+            <ToCatalog />
             <div className='flex flex-col gap-1'>
               <h3 className='font-bold text-white'> Star Wars </h3>
               <h1 className='font-bold md:text-5xl text-3xl text-white'>
