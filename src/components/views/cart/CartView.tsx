@@ -12,7 +12,7 @@ const CartView = () => {
   return (
     <>
       <div className='h-[500px] bg-pink-950 clip-path flex justify-center items-center relative'>
-        <h1 className='font-bold text-white text-4xl'>List Rented Movie</h1>
+        <h1 className='font-bold text-white text-4xl'>Movie Rental</h1>
       </div>
       <main className='max-w-xl m-auto -mt-40 p-4 relative z-10'>
         <ToCatalog />
