@@ -1,6 +1,6 @@
 # Introduction
 
-this project is about movie rental, wit chart feature and movie catalog you can see the [demo here](https://saepulmalik.my.id)
+this project is about movie rental, wit chart feature and movie catalog you can see the [DEMO here](https://movie-rental.saepulmalik.my.id) or [HERE](movie-rental-ebon.vercel.app)
 
 # Setup project
 

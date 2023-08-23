@@ -5,9 +5,11 @@ import React from "react";
 import useCartView from "./_hooks/useCartView";
 import ToCatalog from "@/components/templates/tocatalog/ToCatalog";
 import { USDcurrency } from "@/helpers/utils";
+import { XMarkIcon } from "@heroicons/react/20/solid";
 
 const CartView = () => {
-  const { cartItems, handleRemoveFromCart, totalPrice } = useCartView();
+  const { cartItems, handleRemoveFromCart, totalPrice, handleClearCart } =
+    useCartView();
 
   return (
     <>
@@ -17,7 +19,7 @@ const CartView = () => {
         </div>
       </div>
       <main className='max-w-xl m-auto -mt-40 p-4 flex flex-col gap-5  relative z-10'>
-        <ToCatalog className='text-pink-600' />
+        <ToCatalog className='text-white' />
         <section className='rounded-xl shadow-md p-4 bg-brown-200 text-white flex flex-col gap-5'>
           <h1 className='font-bold '>Your Order</h1>
           <div className='flex flex-col gap-2'>
@@ -55,9 +57,18 @@ const CartView = () => {
             </h3>
           </div>
 
-          <button className='bg-primary-green text-white font-bold py-2 rounded-md'>
-            Purchase
-          </button>
+          <div className='grid grid-cols-1 gap-4 sm:grid-cols-2 w-full'>
+            <button className='bg-primary-green text-white font-bold py-2 rounded-md'>
+              Purchase
+            </button>
+            <button
+              className='bg-red-500 text-white font-bold py-2 rounded-md flex gap-1 justify-center items-center'
+              onClick={handleClearCart}
+            >
+              <XMarkIcon className='h-5 w-5' />
+              Cancel All
+            </button>
+          </div>
         </section>
       </main>
     </>

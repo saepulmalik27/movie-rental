@@ -1,5 +1,9 @@
 import { TMovie } from "@/lib/types/movie.type";
-import { addToCart, removeFromCart } from "@/redux/feature/cart.slice";
+import {
+  addToCart,
+  clearCart,
+  removeFromCart,
+} from "@/redux/feature/cart.slice";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import React from "react";
 
@@ -12,8 +16,8 @@ const useCartView = () => {
     }, 0);
   }, [items]);
 
-  const handleAddToCart = (item: TMovie) => {
-    dispatch(addToCart(item));
+  const handleClearCart = () => {
+    dispatch(clearCart());
   };
 
   const handleRemoveFromCart = (item: TMovie) => {
@@ -24,6 +28,7 @@ const useCartView = () => {
     cartItems: items,
     totalPrice,
     handleRemoveFromCart,
+    handleClearCart,
   };
 };
 
